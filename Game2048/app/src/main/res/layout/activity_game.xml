@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <!-- Поле 4х4 -->
+    <GridLayout
+        android:id="@+id/gridGame"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:rowCount="4"
+        android:columnCount="4" />
+
+    <!-- Счёт и случайное число -->
+    <TextView
+        android:id="@+id/tvScore"
+        android:layout_below="@id/gridGame"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Счёт: 0"
+        android:textSize="20sp"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/tvRandom"
+        android:layout_below="@id/tvScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Случайное число: "
+        android:textSize="16sp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Кнопки управления -->
+    <LinearLayout
+        android:id="@+id/controlsLayout"
+        android:layout_below="@id/tvRandom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="24dp">
+
+        <Button
+            android:id="@+id/btnUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Вверх"
+            android:layout_gravity="center_horizontal" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btnLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Влево"
+                android:layout_marginEnd="16dp" />
+
+            <Button
+                android:id="@+id/btnRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Вправо"
+                android:layout_marginStart="16dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnDown"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Вниз"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Назад"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
+</RelativeLayout>
