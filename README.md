@@ -1,34 +1,32 @@
 # 2048 Game
 
-## Описание
-2048 Game - это мобильное приложение для Android, представляющее собой классическую головоломку 2048. Игра предлагает пользователям объединять одинаковые числа на сетке 4x4, чтобы получить плитку со значением 2048. Приложение включает в себя таблицу рекордов, интеграцию с внешним API для генерации случайных чисел и полностью реализованную логику игры с использованием многопоточности.
+## Description
+2048 Game is an Android mobile application that presents the classic 2048 puzzle. The game allows users to combine identical numbers on a 4x4 grid to achieve a tile with the value of 2048. The application includes a leaderboard, integration with an external API for generating random numbers, and fully implemented game logic using multithreading.
 
-## Установка
-1. Клонируйте репозиторий
+## Installation
+1. Clone the repository
 ```bash
-   git clone https://github.com/fpmi-pmvs2025/pmvs11b-lab8-pickme-team.git
+git clone https://github.com/fpmi-pmvs2025/pmvs11b-lab8-pickme-team.git
 ```
-2. Откройте проект в Android Studio
-3. Синхронизируйте Gradle файлы
-4.  Запустите приложение на эмуляторе или физическом устройстве:
-- Выберите устройство в меню запуска
-- Нажмите кнопку "Run"
+2. Open the project in Android Studio
+3. Synchronize Gradle files
+4. Launch the application on an emulator or physical device:
+* Select a device from the launch menu
+* Click the "Run" button
 
-## Использование
-После установки приложения:
+## Usage
+After installing the application:
 
-1. На главном экране выберите "Начать игру" для запуска новой игры
-2. Управляйте плитками с помощью свайпов или кнопок направления
-3. Объединяйте одинаковые числа, чтобы получить более высокие значения
-4. Игра заканчивается, когда больше нет возможных ходов
-5. Просматривайте свои лучшие результаты в разделе "Рекорды"
+* On the main screen, select "Start Game" to begin a new game
+* Control the tiles using swipes or direction buttons
+* Combine identical numbers to get higher values
+* The game ends when there are no more possible moves
+* View your best results in the "Leaderboard" section
 
-![Главный экран](screenshots/main_screen.png)
-![Игровой процесс](screenshots/gameplay.png)
-![Таблица рекордов](screenshots/leaderboard.png)
+## Creators
 
-## Создатели
-Проект разработан командой:
-- Мошкович Демид - разработка игровой логики, интеграция с API и БД
-- Самсонова Виктория - создание пользовательского интерфейса, тестирование проекта
-- Каноплич Юлия - написание документации, менеджмент, настройка CI/CD
+The project was developed by the team:
+
+ - Demid Moshkovich - game logic development, API and database integration
+ -  Victoria Samsonova - user interface creation, project testing
+ -  Yulia Kanoplich - documentation writing, management, CI/CD setup
