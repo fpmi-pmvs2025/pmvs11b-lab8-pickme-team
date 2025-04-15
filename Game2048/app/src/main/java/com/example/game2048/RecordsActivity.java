@@ -28,6 +28,7 @@ public class RecordsActivity extends AppCompatActivity {
         lvRecords = findViewById(R.id.lvRecords);
         progressBar = findViewById(R.id.progressBar);
         btnBack = findViewById(R.id.btnBack);
+        btnBack.setBackgroundResource(R.drawable.btn_back_bg);
         dbHelper = new DBHelper(this);
         recordsList = new ArrayList<>();
         adapter = new ArrayAdapter<>(this, R.layout.record_item, R.id.tvRecordItem, recordsList);

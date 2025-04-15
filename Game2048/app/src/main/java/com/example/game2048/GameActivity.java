@@ -1,9 +1,11 @@
 package com.example.game2048;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -109,6 +111,23 @@ public class GameActivity extends AppCompatActivity {
                 finish();  // Возвращаемся на главный экран
             }
         });
+
+        btnUp.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.BOLD));
+        btnDown.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.BOLD));
+        btnLeft.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.BOLD));
+        btnRight.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.BOLD));
+        btnBack.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.BOLD));
+        btnUp.setTextColor(getResources().getColor(R.color.sand_text));
+        btnDown.setTextColor(getResources().getColor(R.color.sand_text));
+        btnLeft.setTextColor(getResources().getColor(R.color.sand_text));
+        btnRight.setTextColor(getResources().getColor(R.color.sand_text));
+        btnBack.setTextColor(getResources().getColor(R.color.sand_text));
+
+        btnUp.setBackgroundResource(R.drawable.btn_control_bg);
+        btnDown.setBackgroundResource(R.drawable.btn_control_bg);
+        btnLeft.setBackgroundResource(R.drawable.btn_control_bg);
+        btnRight.setBackgroundResource(R.drawable.btn_control_bg);
+        btnBack.setBackgroundResource(R.drawable.btn_back_bg);
     }
 
     private void updateAfterMove() {
@@ -133,25 +152,42 @@ public class GameActivity extends AppCompatActivity {
     }
 
     // Инициализация ячеек поля в GridLayout (4х4)
+    @SuppressLint("ResourceType")
     private void initGrid() {
         gridLayout.removeAllViews();
         gridLayout.setColumnCount(4);
         gridLayout.setRowCount(4);
+
         for (int i = 0; i < 16; i++) {
             TextView cell = new TextView(this);
             cell.setId(View.generateViewId());
-            cell.setTextSize(24);
+            cell.setTextSize(20); // Меньше текст
             cell.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            cell.setBackgroundResource(android.R.drawable.alert_light_frame);
+            cell.setGravity(Gravity.CENTER);
+
+            // Кастомный фон для ячейки
+            cell.setBackgroundResource(R.drawable.custom_cell_background);
+
+            // Цвет и стиль текста
+            cell.setTextColor(getResources().getColor(R.color.sand_text));
+            cell.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.BOLD));
+
+            // Отступы внутри ячейки
+            cell.setPadding(2, 2, 2, 2);
+
+            // Параметры размещения в GridLayout
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.width = 0;
             params.height = GridLayout.LayoutParams.WRAP_CONTENT;
             params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
             params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+            params.setMargins(8, 8, 8, 8); // Внешние отступы между ячейками
             cell.setLayoutParams(params);
+
             gridLayout.addView(cell);
         }
     }
+
 
     // Перерисовка поля
     private void updateGrid() {

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ControlButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btn_control_bg</item>
+        <item name="android:textColor">@color/sand_text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+    </style>
+
+    <style name="BackButtonStyle" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/btn_back_bg</item>
+        <item name="android:textColor">@color/sand_text</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+    </style>
+</resources>

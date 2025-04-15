@@ -5,5 +5,7 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Game2048" parent="Base.Theme.Game2048" />
+    <style name="Theme.Game2048" parent="Base.Theme.Game2048">
+        <item name="android:windowBackground">#D0A583</item>
+    </style>
 </resources>
