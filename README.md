@@ -8,7 +8,6 @@
 
 ## Description
 2048 Game is an Android mobile application that presents the classic 2048 puzzle. The game allows users to combine identical numbers on a 4x4 grid to achieve a tile with the value of 2048. The application includes a leaderboard, integration with an external API for generating random numbers, and fully implemented game logic using multithreading.
-# pmvs11b-lab8-pickme-team
 
 ## Installation
 
