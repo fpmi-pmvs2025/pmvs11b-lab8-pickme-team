@@ -1,0 +1,23 @@
+title: Game2048 Documentation
+description: Documentation for the 2048 game project
+theme: jekyll-theme-minimal
+
+# Navigation
+nav:
+  - title: Home
+    url: /
+  - title: Installation
+    url: /installation
+  - title: Game Rules
+    url: /game-rules
+  - title: Development
+    url: /development
+  - title: API
+    url: /api
+
+# Default layout
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default 
