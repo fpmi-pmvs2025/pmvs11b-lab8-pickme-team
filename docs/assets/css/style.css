@@ -10,6 +10,7 @@
   position: fixed;
   height: 100vh;
   overflow-y: auto;
+  z-index: 1000;
 }
 
 .sidebar h1 {
@@ -45,7 +46,31 @@
 
 .content {
   flex: 1;
-  margin-left: 300px;
+  margin-left: 290px; 
   padding: 20px;
   max-width: 800px;
-} 
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+  
+  .content {
+    margin-left: 240px;
+  }
+}
+
+@media (max-width: 576px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  
+  .content {
+    margin-left: 0;
+    padding: 10px;
+  }
+}
