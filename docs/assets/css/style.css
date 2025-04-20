@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
-  --primary-color: #2c3e50;
-  --secondary-color: #3498db;
-  --background-color: #f8f9fa;
-  --text-color: #2c3e50;
+  --primary-color: #d45d79; /* Теплый розовый */
+  --secondary-color: #ffb6b9; /* Светлый персиковый */
+  --background-color: #fff5f5; /* Очень светлый розовый */
+  --text-color: #4a4a4a; /* Темно-серый для лучшей читаемости */
   --sidebar-bg: #ffffff;
-  --hover-color: #e9ecef;
+  --hover-color: #ffe5e5; /* Светлый розовый для ховера */
 }
 
 body {
@@ -31,7 +31,7 @@ body {
   height: 100vh;
   overflow-y: auto;
   z-index: 1000;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  box-shadow: 2px 0 5px rgba(212, 93, 121, 0.1);
 }
 
 .sidebar h1 {
@@ -68,7 +68,7 @@ body {
 }
 
 .sidebar a.active {
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   color: white;
 }
 
@@ -79,7 +79,7 @@ body {
   max-width: 900px;
   box-sizing: border-box;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(212, 93, 121, 0.05);
   border-radius: 8px;
   margin-top: 20px;
   margin-right: 20px;
