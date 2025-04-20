@@ -3,23 +3,39 @@ layout: default
 title: Home
 ---
 
-# Добро пожаловать в Game2048
+# 2048 Game - Project Documentation
+## About
 
-Это документация для игры 2048. Здесь вы найдете всю необходимую информацию о проекте.
+The **2048 Game** app allows users to enjoy the popular sliding puzzle game on their Android devices. With intuitive controls and a sleek interface, players can immerse themselves in the challenge of reaching the elusive 2048 tile.
 
-## Основные разделы
+## Main Features
 
-- [Установка](/installation) - как установить игру
-- [Правила игры](/game-rules) - как играть
-- [Разработка](/development) - информация для разработчиков
-- [API](/api) - документация по API
+- **Game Interface**: 
+  - A 4x4 grid where players slide tiles to combine numbers and reach the 2048 tile.
+  - Intuitive swipe controls and on-screen directional buttons for easy gameplay.
 
-## О проекте
+- **Score Tracking**:
+  - Real-time score updates as tiles merge.
+  - Bonus and penalty points based on random numbers fetched from an external API.
 
-Game2048 - это классическая игра-головоломка, где нужно объединять плитки с одинаковыми числами, чтобы получить число 2048.
+- **Records System**:
+  - Stores the top 10 high scores locally using SQLite.
+  - Displays a leaderboard with scores and achievement dates.
 
-### Особенности
-- Простой и понятный интерфейс
-- Сохранение рекордов
-- Адаптивный дизайн
-- Поддержка жестов 
+- **API Integration**:
+  - Fetches a random number from an external API at the start of each game.
+  - Adjusts the player's score based on the fetched number.
+
+- **Performance and Reliability**:
+  - Asynchronous data loading and API requests to ensure a smooth user experience.
+  - Error handling and crash recovery to maintain data integrity and user progress.
+
+- **User Experience**:
+  - A user-friendly interface with clear navigation and responsive controls.
+  - Localization support for multiple languages.
+
+
+## Contributors
+* [Demid Moshkovich](https://github.com/IronGunYT)
+* [Yulia Kanoplich](https://github.com/Juliet165)
+* [Victoria Samsonova](https://github.com/victoriaSamsonovaaa)
