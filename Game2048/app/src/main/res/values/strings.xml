@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Game2048</string>
+    <string name="app_name">Game 2048</string>
     <string name="start_game">Начать игру</string>
     <string name="records">Рекорды</string>
     <string name="exit">Выход</string>

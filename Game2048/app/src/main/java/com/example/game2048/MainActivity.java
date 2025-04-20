@@ -12,30 +12,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Находим кнопки
         Button btnStart = findViewById(R.id.btnStart);
         Button btnRecords = findViewById(R.id.btnRecords);
         Button btnExit = findViewById(R.id.btnExit);
-        btnStart.setBackgroundResource(R.drawable.btn_control_bg);
-        btnRecords.setBackgroundResource(R.drawable.btn_control_bg);
-        btnExit.setBackgroundResource(R.drawable.btn_control_bg);
 
-        findViewById(R.id.btnStart).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, GameActivity.class));
-            }
+        // Обработчик для кнопки "Начать игру"
+        btnStart.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, GameActivity.class);
+            startActivity(intent);
         });
-        findViewById(R.id.btnRecords).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RecordsActivity.class));
-            }
+
+        // Обработчик для кнопки "Рекорды"
+        btnRecords.setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this, RecordsActivity.class);
+            startActivity(intent);
         });
-        findViewById(R.id.btnExit).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finishAffinity();
-            }
-        });
+
+        // Обработчик для кнопки "Выход"
+        btnExit.setOnClickListener(v -> finish());
     }
 }
