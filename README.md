@@ -46,6 +46,6 @@ After installing the application:
 
 The project was developed by the team:
 
- - Demid Moshkovich - game logic development, API and database integration
- -  Victoria Samsonova - user interface creation, project testing
- -  Yulia Kanoplich - documentation writing, management, CI/CD setup
+ -  [Demid Moshkovich](https://github.com/IronGunYT) - game logic development, API and database integration
+ -  [Victoria Samsonova](https://github.com/victoriaSamsonovaaa) - user interface creation, project testing
+ -  [Yulia Kanoplich](https://github.com/Juliet165)h - documentation writing, management, CI/CD setup
