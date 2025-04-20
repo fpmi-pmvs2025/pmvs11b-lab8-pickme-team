@@ -32,8 +32,3 @@ jobs:
     - name: Run Linting
       run: ./gradlew lint
 
-    - name: Upload Build Artifacts
-      uses: actions/upload-artifact@v3
-      with:
-        name: build-artifacts
-        path: app/build/outputs/apk/
