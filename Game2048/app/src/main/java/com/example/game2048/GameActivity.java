@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Locale;
 
@@ -119,8 +120,7 @@ public class GameActivity extends AppCompatActivity {
             int finalScore = gameManager.getScore() + scoreModifier;
             DBHelper dbHelper = new DBHelper(this);
             dbHelper.insertRecord(finalScore);
-            tvScore.setText(String.format(Locale.getDefault(), 
-                "Игра окончена! Итоговый счёт: %d", finalScore));
+            showGameOverDialog(finalScore);
             gameOverProcessed = true;
         }
     }
@@ -188,5 +188,59 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         return gestureDetector.onTouchEvent(event);
+    }
+
+    private void showGameOverDialog(int score) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.game_over))
+                .setMessage(getString(R.string.score, score))
+                .setPositiveButton(getString(R.string.new_game), (dialog, which) -> {
+                    startNewGame();
+                })
+                .setNegativeButton(getString(R.string.exit), (dialog, which) -> {
+                    finish();
+                })
+                .setCancelable(false);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        
+        // Изменяем цвет кнопок
+        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        
+        if (positiveButton != null) {
+            positiveButton.setTextColor(getResources().getColor(R.color.text));
+            positiveButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+        
+        if (negativeButton != null) {
+            negativeButton.setTextColor(getResources().getColor(R.color.text));
+            negativeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+    }
+
+    private void startNewGame() {
+        gameManager = new GameManager();
+        gameOverProcessed = false;
+        scoreModifier = 0;
+        initGrid();
+        updateGrid();
+        updateScore();
+        
+        // Загрузка случайного числа из внешнего API
+        new Thread(() -> {
+            final int randomNum = RandomNumberTask.getRandomNumber();
+            if (randomNum > 50) {
+                scoreModifier = 10;
+            } else {
+                scoreModifier = -5;
+            }
+            new Handler(Looper.getMainLooper()).post(() -> {
+                tvRandom.setText(String.format(Locale.getDefault(), 
+                    "Случайное число: %d (%+d к счёту)", randomNum, scoreModifier));
+                updateScore();
+            });
+        }).start();
     }
 }
