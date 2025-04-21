@@ -5,8 +5,8 @@ description: Documentation for the 2048 game project
 nav:
   - title: Home
     url: /
-  - title: Installation
-    url: /installation
+  - title: Functional requirements
+    url: /functional
   - title: Additional specification
     url: /additional
   - title: Development
