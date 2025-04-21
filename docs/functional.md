@@ -145,4 +145,4 @@ _Acceptance Criteria:_
 8. The user presses the "Back" button to return to the main screen.
 
 ## Use Case Diagram
-<img src="https://github.com/fpmi-pmvs2025/pmvs11b-lab8-pickme-team/blob/main/docs/pics/usecase.png" alt="records table" width="50%" />
+<img src=/pics/usecase.png alt="use-case diagram" width="50%" />
