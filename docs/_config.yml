@@ -7,8 +7,8 @@ nav:
     url: /
   - title: Installation
     url: /installation
-  - title: Game Rules
-    url: /game-rules
+  - title: Additional specification
+    url: /additional
   - title: Development
     url: /development
   - title: API
