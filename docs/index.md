@@ -34,6 +34,9 @@ The **2048 Game** app allows users to enjoy the popular sliding puzzle game on t
   - A user-friendly interface with clear navigation and responsive controls.
   - Localization support for multiple languages.
 
+## Repository Link
+[Link to GitHub](https://github.com/fpmi-pmvs2025/pmvs11b-lab8-pickme-team)
+
 ## User Intefrace
 
 <img src="pics/start.jpg" alt="start" width="20%" />
