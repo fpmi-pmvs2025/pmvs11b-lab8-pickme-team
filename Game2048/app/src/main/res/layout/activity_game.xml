@@ -2,90 +2,121 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EFEBCE"
     android:padding="16dp">
 
     <!-- Поле 4х4 -->
     <GridLayout
         android:id="@+id/gridGame"
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="320dp"
+        android:layout_height="320dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
-        android:rowCount="4"
-        android:columnCount="4" />
+        android:background="#BB8588"
+        android:columnCount="4"
+        android:rowCount="4" />
 
     <!-- Счёт и случайное число -->
     <TextView
         android:id="@+id/tvScore"
-        android:layout_below="@id/gridGame"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/gridGame"
+        android:layout_alignStart="@id/gridGame"
+        android:layout_marginTop="16dp"
+        android:fontFamily="monospace"
+        android:gravity="start"
         android:text="Счёт: 0"
-        android:textSize="20sp"
-        android:layout_marginTop="16dp" />
+        android:textColor="#A3A380"
+        android:textSize="22sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvRandom"
-        android:layout_below="@id/tvScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvScore"
+        android:layout_alignStart="@id/gridGame"
+        android:layout_marginTop="8dp"
+        android:fontFamily="monospace"
+        android:gravity="start"
         android:text="Случайное число: "
-        android:textSize="16sp"
-        android:layout_marginTop="8dp" />
+        android:textColor="#A3A380"
+        android:textSize="18sp"
+        android:textStyle="bold" />
 
     <!-- Кнопки управления -->
     <LinearLayout
-        android:id="@+id/controlsLayout"
-        android:layout_below="@id/tvRandom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="24dp">
+        android:layout_below="@id/tvRandom"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:orientation="vertical">
 
-        <Button
+        <!-- Верхняя кнопка -->
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnUp"
+            style="@style/ControlButtonStyle"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="12dp"
+            android:drawableTop="@drawable/ic_arrow_up"
+            android:gravity="center"
+            android:text="" />
+
+        <!-- Средний ряд -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Вверх"
-            android:layout_gravity="center_horizontal" />
+            android:gravity="center"
+            android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_horizontal"
-            android:layout_marginTop="8dp">
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnLeft"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Влево"
-                android:layout_marginEnd="16dp" />
+                style="@style/ControlButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="12dp"
+                android:drawableTop="@drawable/ic_arrow_left"
+                android:gravity="center"
+                android:text="" />
 
-            <Button
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnRight"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Вправо"
-                android:layout_marginStart="16dp" />
+                style="@style/ControlButtonStyle"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="12dp"
+                android:drawableTop="@drawable/ic_arrow_right"
+                android:gravity="center"
+                android:text="" />
+
         </LinearLayout>
 
-        <Button
+        <!-- Нижняя кнопка -->
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnDown"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Вниз"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp" />
+            style="@style/ControlButtonStyle"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:drawableTop="@drawable/ic_arrow_down"
+            android:gravity="center"
+            android:text="" />
+
     </LinearLayout>
 
-    <Button
+
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBack"
+        style="@style/BackButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Назад"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="16dp"
+        android:text="Назад" />
 </RelativeLayout>

@@ -1,14 +1,17 @@
 package com.example.game2048;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.GestureDetector;
+import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.Locale;
 
@@ -37,29 +40,27 @@ public class GameActivity extends AppCompatActivity {
         btnRight = findViewById(R.id.btnRight);
         btnBack = findViewById(R.id.btnBack);
 
+        // Настройка сетки
+        gridLayout.setBackgroundResource(R.drawable.cell_background);
+        gridLayout.setPadding(16, 16, 16, 16);
+
         gameManager = new GameManager();
         initGrid();
         updateGrid();
 
         // Загрузка случайного числа из внешнего API
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                final int randomNum = RandomNumberTask.getRandomNumber(); // получает число от 1 до 100
-                // модифицируем счёт
-                if (randomNum > 50) {
-                    scoreModifier = 10;
-                } else {
-                    scoreModifier = -5;
-                }
-                new Handler(Looper.getMainLooper()).post(new Runnable() {
-                    @Override
-                    public void run() {
-                        tvRandom.setText(String.format(Locale.getDefault(), "Случайное число: %d (%+d к счёту)", randomNum, scoreModifier));
-                        updateScore();
-                    }
-                });
+        new Thread(() -> {
+            final int randomNum = RandomNumberTask.getRandomNumber();
+            if (randomNum > 50) {
+                scoreModifier = 10;
+            } else {
+                scoreModifier = -5;
             }
+            new Handler(Looper.getMainLooper()).post(() -> {
+                tvRandom.setText(String.format(Locale.getDefault(), 
+                    "Случайное число: %d (%+d к счёту)", randomNum, scoreModifier));
+                updateScore();
+            });
         }).start();
 
         // Обработка свайпов
@@ -86,29 +87,29 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        // Кнопки управления
-        btnUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { gameManager.moveUp(); updateAfterMove(); }
+        // Обработчики для кнопок управления
+        btnUp.setOnClickListener(v -> {
+            gameManager.moveUp();
+            updateAfterMove();
         });
-        btnDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { gameManager.moveDown(); updateAfterMove(); }
+
+        btnDown.setOnClickListener(v -> {
+            gameManager.moveDown();
+            updateAfterMove();
         });
-        btnLeft.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { gameManager.moveLeft(); updateAfterMove(); }
+
+        btnLeft.setOnClickListener(v -> {
+            gameManager.moveLeft();
+            updateAfterMove();
         });
-        btnRight.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) { gameManager.moveRight(); updateAfterMove(); }
+
+        btnRight.setOnClickListener(v -> {
+            gameManager.moveRight();
+            updateAfterMove();
         });
-        btnBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();  // Возвращаемся на главный экран
-            }
-        });
+
+        // Кнопка "Назад"
+        btnBack.setOnClickListener(v -> finish());
     }
 
     private void updateAfterMove() {
@@ -116,13 +117,10 @@ public class GameActivity extends AppCompatActivity {
         updateGrid();
         updateScore();
         if (gameManager.isGameOver()) {
-            // По окончании игры выводим итоговый счёт (с учётом модификатора)
             int finalScore = gameManager.getScore() + scoreModifier;
-            // Если рекорд, сохраняем его в БД
             DBHelper dbHelper = new DBHelper(this);
             dbHelper.insertRecord(finalScore);
-            // Вывод сообщения об окончании игры
-            tvScore.setText(String.format(Locale.getDefault(), "Игра окончена! Итоговый счёт: %d", finalScore));
+            showGameOverDialog(finalScore);
             gameOverProcessed = true;
         }
     }
@@ -132,28 +130,35 @@ public class GameActivity extends AppCompatActivity {
         tvScore.setText(String.format(Locale.getDefault(), "Счёт: %d", score));
     }
 
-    // Инициализация ячеек поля в GridLayout (4х4)
+    @SuppressLint("ResourceType")
     private void initGrid() {
         gridLayout.removeAllViews();
         gridLayout.setColumnCount(4);
         gridLayout.setRowCount(4);
+
         for (int i = 0; i < 16; i++) {
             TextView cell = new TextView(this);
             cell.setId(View.generateViewId());
             cell.setTextSize(24);
             cell.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            cell.setBackgroundResource(android.R.drawable.alert_light_frame);
+            cell.setGravity(Gravity.CENTER);
+            cell.setBackgroundResource(R.drawable.custom_cell_background);
+            cell.setTextColor(getResources().getColor(R.color.background));
+            cell.setTypeface(android.graphics.Typeface.create("sans-serif-medium", android.graphics.Typeface.BOLD));
+            cell.setPadding(8, 8, 8, 8);
+
             GridLayout.LayoutParams params = new GridLayout.LayoutParams();
             params.width = 0;
-            params.height = GridLayout.LayoutParams.WRAP_CONTENT;
+            params.height = 0;
             params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
             params.rowSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+            params.setMargins(4, 4, 4, 4);
             cell.setLayoutParams(params);
+
             gridLayout.addView(cell);
         }
     }
 
-    // Перерисовка поля
     private void updateGrid() {
         int[][] grid = gameManager.getGrid();
         for (int i = 0; i < 16; i++) {
@@ -161,7 +166,21 @@ public class GameActivity extends AppCompatActivity {
             int row = i / 4;
             int col = i % 4;
             int num = grid[row][col];
-            cell.setText(num == 0 ? "" : String.valueOf(num));
+            
+            if (num == 0) {
+                cell.setText("");
+                cell.setBackgroundResource(R.drawable.custom_cell_background);
+            } else {
+                cell.setText(String.valueOf(num));
+                // Изменяем размер текста в зависимости от числа
+                if (num < 100) {
+                    cell.setTextSize(24);
+                } else if (num < 1000) {
+                    cell.setTextSize(20);
+                } else {
+                    cell.setTextSize(16);
+                }
+            }
         }
     }
 
@@ -169,5 +188,59 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public boolean onTouchEvent(MotionEvent event) {
         return gestureDetector.onTouchEvent(event);
+    }
+
+    private void showGameOverDialog(int score) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle(getString(R.string.game_over))
+                .setMessage(getString(R.string.score, score))
+                .setPositiveButton(getString(R.string.new_game), (dialog, which) -> {
+                    startNewGame();
+                })
+                .setNegativeButton(getString(R.string.exit), (dialog, which) -> {
+                    finish();
+                })
+                .setCancelable(false);
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        
+        // Изменяем цвет кнопок
+        Button positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
+        Button negativeButton = dialog.getButton(AlertDialog.BUTTON_NEGATIVE);
+        
+        if (positiveButton != null) {
+            positiveButton.setTextColor(getResources().getColor(R.color.text));
+            positiveButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+        
+        if (negativeButton != null) {
+            negativeButton.setTextColor(getResources().getColor(R.color.text));
+            negativeButton.setBackgroundColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+    }
+
+    private void startNewGame() {
+        gameManager = new GameManager();
+        gameOverProcessed = false;
+        scoreModifier = 0;
+        initGrid();
+        updateGrid();
+        updateScore();
+        
+        // Загрузка случайного числа из внешнего API
+        new Thread(() -> {
+            final int randomNum = RandomNumberTask.getRandomNumber();
+            if (randomNum > 50) {
+                scoreModifier = 10;
+            } else {
+                scoreModifier = -5;
+            }
+            new Handler(Looper.getMainLooper()).post(() -> {
+                tvRandom.setText(String.format(Locale.getDefault(), 
+                    "Случайное число: %d (%+d к счёту)", randomNum, scoreModifier));
+                updateScore();
+            });
+        }).start();
     }
 }

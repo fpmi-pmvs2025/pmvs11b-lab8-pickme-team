@@ -1,6 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Game2048</string>
+    <string name="app_name">2048 GAME</string>
     <string name="start_game">Начать игру</string>
     <string name="records">Рекорды</string>
     <string name="exit">Выход</string>
+    <string name="back">Назад</string>
+    <string name="score">Счет: %d</string>
+    <string name="best_score">Лучший счет: %d</string>
+    <string name="game_over">Игра окончена!</string>
+    <string name="new_game">Новая игра</string>
+    <string name="records_title">Таблица рекордов</string>
+    <string name="no_records">Нет сохраненных рекордов</string>
+    <string name="settings">Настройки</string>
 </resources>
