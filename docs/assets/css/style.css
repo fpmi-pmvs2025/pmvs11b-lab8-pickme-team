@@ -2,10 +2,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 
 :root {
-  --primary-color: #d45d79 !important;
-  --secondary-color: #ffb6b9 !important;
-  --background-color: #fff5f5 !important;
-  --text-color: #4a4a4a !important;
+  --primary-color: #BB8588 !important;
+  --secondary-color: #BA4353 !important;
+  --background-color: #EFEBCE !important;
+  --text-color: #A3A380 !important;
   --sidebar-bg: #ffffff !important;
   --hover-color: #ffe5e5 !important;
 }
