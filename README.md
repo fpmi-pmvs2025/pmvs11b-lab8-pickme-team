@@ -47,4 +47,4 @@ The project was developed by the team:
 
  -  [Demid Moshkovich](https://github.com/IronGunYT) - game logic development, API and database integration
  -  [Victoria Samsonova](https://github.com/victoriaSamsonovaaa) - user interface creation, project testing
- -  [Yulia Kanoplich](https://github.com/Juliet165)h - documentation writing, management, CI/CD setup
+ -  [Yulia Kanoplich](https://github.com/Juliet165) - documentation writing, management, CI/CD setup
