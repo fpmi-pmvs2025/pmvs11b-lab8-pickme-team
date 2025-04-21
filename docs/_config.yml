@@ -9,10 +9,10 @@ nav:
     url: /functional
   - title: Additional specification
     url: /additional
-  - title: Development
-    url: /development
-  - title: API
-    url: /api
+  - title: DB and Files scheme
+    url: /db_files
+  - title: Project presentationa
+    url: /presentation
 
 # Default layout
 defaults:
