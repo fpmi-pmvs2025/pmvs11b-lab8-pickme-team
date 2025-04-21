@@ -104,7 +104,7 @@ _Acceptance Criteria:_
 - If the result is not in the top 10, the user receives a corresponding notification.
 - Data is saved even after closing the application.
 
-## Textual Use Cases
+## Use Cases
 
 ### Scenario 1: Starting a New Game
 1. The user opens the application.
@@ -145,3 +145,4 @@ _Acceptance Criteria:_
 8. The user presses the "Back" button to return to the main screen.
 
 ## Use Case Diagram
+<img src="https://github.com/fpmi-pmvs2025/pmvs11b-lab8-pickme-team/blob/main/docs/pics/usecase.png" alt="records table" width="50%" />
