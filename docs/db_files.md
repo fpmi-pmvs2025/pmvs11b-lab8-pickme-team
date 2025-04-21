@@ -112,3 +112,6 @@ The project uses Git for version control with:
 - Basic upgrade strategy (drop and recreate)
 - Thread-safe operations
 - Proper resource management
+
+## Database Scheme
+<img src="https://github.com/fpmi-pmvs2025/pmvs11b-lab8-pickme-team/blob/main/docs/pics/db.png" alt="db_scheme" width="50%" />
