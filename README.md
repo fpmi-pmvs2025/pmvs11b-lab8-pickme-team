@@ -41,6 +41,8 @@ After installing the application:
 * The game ends when there are no more possible moves
 * View your best results in the "Leaderboard" section
 
+## To learn more about the project, visit our [Pages](https://fpmi-pmvs2025.github.io/pmvs11b-lab8-pickme-team/)
+
 ## Creators
 
 The project was developed by the team:
