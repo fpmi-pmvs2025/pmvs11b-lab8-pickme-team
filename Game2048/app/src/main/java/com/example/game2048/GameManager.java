@@ -3,7 +3,7 @@ package com.example.game2048;
 import java.util.Random;
 
 public class GameManager {
-    private int[][] grid;
+    public int[][] grid;
     private int score;
     private Random random;
 
