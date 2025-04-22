@@ -28,11 +28,16 @@ jobs:
       run: |
         cd Game2048
         chmod +x ./gradlew
-      
+
+    - name: Run Tests
+      run: |
+        cd Game2048
+        ./gradlew testDebugUnitTest
+
     - name: Build
       run: |
         cd Game2048
-        ./gradlew assembleDebug -x test -x lint
+        ./gradlew assembleDebug -x lint
         
     - name: Upload APK
       uses: actions/upload-artifact@v4
@@ -40,4 +45,3 @@ jobs:
         name: app-debug
         path: Game2048/app/build/outputs/apk/debug/app-debug.apk
         retention-days: 30
-
